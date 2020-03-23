@@ -1,0 +1,9 @@
+sudo: required
+services: 
+    - docker
+
+before_install: 
+    - docker build -t gentlyawesome/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true gentlyawesome/docker-react npm run test
